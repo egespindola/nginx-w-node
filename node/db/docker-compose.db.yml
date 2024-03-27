@@ -1,0 +1,17 @@
+services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: node
+      MYSQL_PASSWORD: node
+      MYSQL_DATABASE: nodejs
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8099:8080
