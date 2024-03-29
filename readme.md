@@ -17,8 +17,8 @@ On each access, a random name will be inserted into the database and the API wil
 ___
 
 ## Stacks & Tools
-> ExpressJS
-> MySQL
-> Adminer
-> Nginx
-> Docker-Compose
+> ExpressJS 
+> MySQL 
+> Adminer 
+> Nginx 
+> Docker-Compose 
