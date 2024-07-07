@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   app:
@@ -7,11 +7,25 @@ services:
     container_name: app
     networks:
       - node-nginx-network
+    entrypoint:
+      [
+        "dockerize",
+        "-wait",
+        "tcp://db:3306",
+        "-timeout",
+        "20s",
+        "npm",
+        "run",
+        "start",
+      ]
+
     tty: true
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - ./node:/usr/src/app
+    depends_on:
+      - db
 
   nginx:
     build:
@@ -22,7 +36,7 @@ services:
     networks:
       - node-nginx-network
     depends_on:
-      - app  
+      - app
 
   db:
     image: mysql:5.7
